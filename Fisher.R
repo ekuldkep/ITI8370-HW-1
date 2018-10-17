@@ -45,7 +45,9 @@ train_set <- x[train_ind,]
 test <- x[- train_ind,]
 train <- train_set
 
-fisher_score <- function(data, best_count, class_count){
+fisher_score <- function(data, class_count){
+  fisher_matrix <- matrix( , nrow = 1, ncol = ncol(data) - 1)
+  print(fisher_matrix)
   points_count <- nrow(data)
   label_col <- ncol(data)
   calc_dim_count <- label_col - 1
@@ -70,7 +72,9 @@ fisher_score <- function(data, best_count, class_count){
         under <- fraction_class_points * dispersion
         dim_result = dim_result + (upper/under)
       }
+      fisher_matrix[ ,j] = dim_result
+      return(fisher_matrix)
   }
 }
 
-fisher_score(test, 2, 3)
+fisher_score(test, 3)
