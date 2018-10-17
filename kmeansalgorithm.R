@@ -119,6 +119,8 @@ generate_silhouette = function(labels, dmatrix){
     label = labels[i]
     dist_row = dmatrix[i, ]
     label_mask = labels == label
+    print("mask")
+    print(label_mask)
     not_label_mask = labels != label
     
     local_cluster_distances = dist_row[label_mask]

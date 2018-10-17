@@ -64,8 +64,7 @@ mydistfun<- function(element1,element2, p){
 
 lof <- function(data, data_point, k){
   data_point_lk <-lk(data, data_point, k)
-  #print(data_point)
-  
+   
   ar_data_point <- ar(data, data_point_lk, data_point, k)
   
   lof <- 0
@@ -125,10 +124,6 @@ vk <- function(k_nearest_neighbours, k){
 
     return(Vk)
 }
-
-#a <- c(1, 2)
-#a_lof = lof(train, a, 3)
-#print(a_lof)
 
 for (i in 1:nrow(train)) {
    color = "green"
