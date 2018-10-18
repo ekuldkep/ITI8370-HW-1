@@ -78,7 +78,6 @@ covariance <- function(data){
 
 malanhobisfun<- function(point, mean, data){
   subtracted_vector = point - mean
-  
   #transpose
   transposed_vector = t(subtracted_vector)
   
@@ -88,13 +87,11 @@ malanhobisfun<- function(point, mean, data){
   # find the inversion,  S^-1
   inv_cov = solve(cov_of_dataset)
   
-  temp_value = subtracted_vector %*% inv_cov
-  
   # difference times S^-1 times the difference transposed
   full_result = subtracted_vector %*% inv_cov %*% transposed_vector
   
-  
   final = full_result ^ (1/2)
+  print(final)
   return(final)
   
 }
