@@ -1,16 +1,20 @@
 
+library("scatterplot3d")
+library("car")
+library("rgl")
+# library('lattice')
+
 canberradist<- function(element1, element2){
   summ <- 0
   for (i in seq(along=element1)) {
     
     sub_abs <- abs(element1[i] - element2[i])
     abs_sum <- abs(element1[i]) + abs(element2[i])
-    summ <- summ + sub_abs/abs_sum
+    summ <- summ + (sub_abs/abs_sum)
   }
   return(summ)
 }
    
-
 
 minkowsky<- function(element1,element2, p){
   
@@ -91,9 +95,7 @@ malanhobisfun<- function(point, mean, data){
   full_result = subtracted_vector %*% inv_cov %*% transposed_vector
   
   final = full_result ^ (1/2)
-  print(final)
   return(final)
-  
 }
 
 #dataset taken from here https://jamesmccaffrey.wordpress.com/2017/11/09/example-of-calculating-the-mahalanobis-distance/
@@ -106,6 +108,8 @@ Dataset = matrix(
   nrow=5,
   ncol=3
 )
+
+
 
 
 p = matrix(c(64, 580, 29), nrow=1)
@@ -124,3 +128,36 @@ value4 = minkowsky(a,b,4)
 value5 = minkowsky(a,b,5)
 value6 = minkowsky(a,b,Inf)
 canb = canberradist(a,b)
+
+
+x<- c(-50:50)
+x<-x*0.1
+y=x
+
+#imagine 10 by 10 square with the center at origine
+# compute the distance between the origin and each internal point ofthe square
+elt1<-matrix( , 2,1)
+elt2<-matrix( , 2,1)
+
+elt1[1,1]=0
+elt1[2,1]=0
+
+z1<-matrix(, 101,101)
+z2<-matrix(, 101,101)
+z3<-matrix(, 101,101)
+
+for (i in 1:101){
+  elt2[1,1]=x[i]
+  for  (j in 1:101){
+    elt2[2,1]=y[j]
+    z1[i,j]=minkowsky(elt1,elt2,1)
+    z2[i,j]=minkowsky(elt1,elt2,2)
+    z3[i,j]=minkowsky(elt1,elt2,3)
+    
+  }
+}
+
+
+persp3d(x, y, z1,alpha=0.5, col="skyblue")
+persp3d(x, y, z2,alpha=0.5, col="brown3",add=T)
+persp3d(x, y, z3,alpha=0.5, col="green",add=T)

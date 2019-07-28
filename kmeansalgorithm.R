@@ -119,8 +119,6 @@ generate_silhouette = function(labels, dmatrix){
     label = labels[i]
     dist_row = dmatrix[i, ]
     label_mask = labels == label
-    print("mask")
-    print(label_mask)
     not_label_mask = labels != label
     
     local_cluster_distances = dist_row[label_mask]
@@ -146,6 +144,7 @@ generate_silhouette = function(labels, dmatrix){
 sintra = function(cluster_label, labels, dmatrix){
   mask = labels == cluster_label
   local_cluster_matrix = dmatrix[mask, mask]
+  print(local_cluster_matrix)
   summed = sum(local_cluster_matrix)
   len = length(local_cluster_matrix)
   average = summed / len

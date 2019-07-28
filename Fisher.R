@@ -73,6 +73,7 @@ fisher_score <- function(data, class_count){
         dim_result = dim_result + (upper/under)
       }
       fisher_matrix[ ,j] = dim_result
+      print(fisher_matrix)
       return(fisher_matrix)
   }
 }

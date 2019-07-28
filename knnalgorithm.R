@@ -113,8 +113,7 @@ knnfun <- function(data, new_point, neighbours_count){
   
   labels_as_vector <- as.vector(k_nearest_neighbours[, 3])
   #let neighbours vote for the new point lable
-  #currently if labels count is equal takes first in list. Should take some new points then? or if I have 5 points
-  #and 2 are from one and two for another should the fifth vote for the class that is closer to fifth point?
+  
   best_elem = -1
   best = -1
   for (i in labels_as_vector){
