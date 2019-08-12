@@ -17,6 +17,8 @@ expected results. When clusters were far from each other then silhouette was hig
 When I compared my programmed k - means to third party k – means algorithm then results
 were exactly the same. 
 
+![k-means clustering result](/Pictures/Hw1DmKmeans.JPG)
+
 **3. Classification**
 
 I tested my knn algorithm with test points from our data generator. So I knew initially what was
@@ -31,6 +33,8 @@ course. A bit changed the result the neighbours count but that change was really
 example with 60 neighbours the mistake was 16 and with 5 neighbours the mistake were 23.
 But with three dimensions it showed clearly that mahlanobis distance was the best with each
 configuration. 
+
+![knn classification result](/Pictures/Hw1DmKnn.JPG)
 
 **4. Fisher score**
 
